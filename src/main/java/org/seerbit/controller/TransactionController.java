@@ -20,8 +20,6 @@ public class TransactionController {
 
     @PostMapping("/transaction")
     public ResponseEntity<?> transaction(@RequestBody TransactionRequest request) {
-        Instant instant = Instant.now();
-//        request.setTimeStamp(instant);
         transactionService.createTransaction(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
