@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  ship-iam-service: # Service name
+    build: ./Seerbit-Transaction-service # Path to the Dockerfile
+    ports:
+      - "9092:8082" # Map host port 9092 to container port 8082
+    environment:
+      SPRING_PROFILES_ACTIVE: local # Example environment variable
+    volumes:
+      - ./Seerbit-Transaction-service:/app # Optional: Mount service directory for development
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
