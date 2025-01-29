@@ -18,7 +18,7 @@ public class TransactionController {
 
     private final TransactionService transactionService;
 
-    @PostMapping("/transaction")
+    @PostMapping("/transactions")
     public ResponseEntity<?> transaction(@RequestBody TransactionRequest request) {
         transactionService.createTransaction(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -29,7 +29,7 @@ public class TransactionController {
         return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.getStatistic());
     }
 
-    @DeleteMapping
+    @DeleteMapping("/transactions")
     public ResponseEntity<?> deleteTransactions() {
         return ResponseEntity.noContent().build();
     }
